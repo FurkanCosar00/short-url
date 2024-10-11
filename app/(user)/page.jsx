@@ -35,9 +35,9 @@ export default async function Home() {
 
       <ul className="links">
         {user ? 
-          registeredUrl.map(x => <li><Link href={`/${x.short_url}`}>{x.short_url}</Link></li>)
+          registeredUrl.map((x, i) => <li key={i}><Link href={`/${x.short_url}`}>{x.short_url}</Link></li>)
         : 
-          anonUrl.map(x => <li><Link href={`/${x.short_url}`}>{x.short_url}</Link></li>)
+          anonUrl.map((x, i) => <li key={i}><Link href={`/${x.short_url}`}>{x.short_url}</Link></li>)
         } 
       </ul>
     </div>
