@@ -2,6 +2,7 @@
 
 import { makeid } from "@/utils/link";
 import { createClient } from "@/utils/supabase/server";
+import { redirect } from "next/navigation";
 
 export async function signOut() {
     const supabase = createClient();
@@ -12,15 +13,18 @@ export async function signOut() {
 export default async function postLongUrl(formData) {
     const supabase = createClient();
     const short_url = makeid(6);
-
+    const {data : { user }} = await supabase.auth.getUser();
+    
     const { error: insertError } = await supabase
     .from('urls')
     .insert([
         { 
             long_url: formData.get("long_url"),
-            short_url: short_url
+            short_url: short_url,
+            user_id: user?.id
         }
     ]);
 
     console.log(formData.get("long_url"))
+    redirect("/")
 }
