@@ -1,7 +1,13 @@
+import Link from "next/link";
+
 export default function UserLayout({ children }){
   return(
-      <div>
-          {children}
-      </div>
+    <>
+      <header className="header">
+        <Link href="/login">login</Link>
+      </header>
+
+      {children}
+    </>
   )
 }
