@@ -21,7 +21,7 @@ export default async function Home() {
         {urls.map(x => 
           <div className="deneme">
 
-            <Link href={`/`}>{x.short_url}</Link>
+            <Link href={`/${x.short_url}`}>{x.short_url}</Link>
           </div>
         )}
     </div>
